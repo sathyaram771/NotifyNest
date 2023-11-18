@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: inline;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input[type="radio"] {
+            margin: 0 5px;
+        }
+
+        #submitbutton {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitbutton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>NAME</th>
+            <th>ROLL NO</th>
+            <th>ATTENDANCE</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ data['name'] }}</td>
+                <td>{{ data['roll_no'] }}</td>
+                <td>
+                    <form action='/store' method="post" onsubmit="disablebutton()">
+                        <input type="radio" id="present" name="attendance" value="Present">
+                        <label for="present">PRESENT</label>
+                        <input type="radio" id="absent" name="attendance" value="Absent">
+                        <label for="absent">ABSENT</label>
+                        <input type="submit" value="Submit" id="submitbutton">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function disablebutton() {
+            document.getElementById("submitbutton").disabled = true;
+        }
+    </script>
+</body>
+</html>
